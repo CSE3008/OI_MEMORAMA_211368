@@ -6,33 +6,77 @@ generarTablero()
 
 function cargarIconos() {
     iconos = [
-        '<img src="img/m1.jpg">',
-        '<img src="img/m2.jpg">',
-        '<img src="img/m3.jpg">',
-        '<img src="img/m4.jpg">',
-        '<img src="img/m5.jpg">',
-        '<img src="img/m6.jpg">',
-        '<img src="img/m7.jpg">',
-        '<img src="img/m8.jpg">',
-        '<img src="img/m9.jpg">',
-        '<img src="img/m10.jpg">',
-        '<img src="img/m11.jpg">',
-        '<img src="img/m12.jpg">',
-        '<img src="img/m13.jpg">',
+        '<img src="img/taco.png">',
+        '<img src="img/tostada.png">',
+        '<img src="img/taza-de-cafe.png">',
+        '<img src="img/galleta.png">',
+        '<img src="img/hamburguesa.png">',
+        '<img src="img/helado.png">',
+        '<img src="img/magdalena.png">',
+        '<img src="img/papas-fritas.png">',
+        '<img src="img/platanos.png">',
+        '<img src="img/">',
+        '<img src="img/">',
+        '<img src="img/">',
     ]
 }
+function IconosAleatorios() {
+    cargarIconos()
+    let al = 0;
+    cartas = []
+    usados = []
+   let rep = "";
+    for (let i = 0; i < 8; i++) {   
+        al =  Math.floor(Math.random()*9 );  
+        console.log("this is AL" +al);
+       
+        rep = repetido(al);
+
+        console.log (rep);
+        if  (rep == false){       
+              usados.push(al);    
+            cartas[i] = iconos[al];   
+            console.log("contador" + i); 
+        } else{ i = i-1;
+            console.log("quitamos" + i);}
+        
+      /*  while (rep != false) {
+            console.log(rep);
+            al =  Math.floor(Math.random()*8 +1);
+            console.log(al);
+            
+            console.log(rep);
+            usados.push(al);  
+            }
+        */                        
+        
+            
+    }
+    console.log(cartas);
+
+}
+function repetido(num) {
+   let repe = false;
+    for (i=0; i < usados.length; i++) {
+       
+    if (num == usados[i]) {
+    repe = true;
+    }
+    }
+    return repe;
+    }
 
 function generarTablero() {
-    cargarIconos()
+    IconosAleatorios()
     selecciones = []
     let tablero = document.getElementById("tablero")
     let tarjetas = []
     for (let i = 0; i < 16; i++) {
-        tarjetas.push(`
+         tarjetas.push(`
         <div class="area-tarjeta" onclick="seleccionarTarjeta(${i})">
             <div class="tarjeta" id="tarjeta${i}">
                 <div class="cara trasera" id="trasera${i}">
-                    ${iconos[0]}
+                    ${cartas[0]}
                 </div>
                 <div class="cara superior">
                 <i class="far fa-star"></i>
@@ -41,7 +85,7 @@ function generarTablero() {
         </div>        
         `)
         if (i % 2 == 1) {
-            iconos.splice(0, 1)
+            cartas.splice(0, 1)
         }
     }
     tarjetas.sort(() => Math.random() - 0.5)
@@ -67,6 +111,8 @@ function deseleccionar(selecciones) {
         if (trasera1.innerHTML != trasera2.innerHTML) {
             let tarjeta1 = document.getElementById("tarjeta" + selecciones[0])
             let tarjeta2 = document.getElementById("tarjeta" + selecciones[1])
+            tarjeta1.style.borderColor = '#FF0000'
+            tarjeta2.style.borderColor = '#FF0000'
             tarjeta1.style.transform = "rotateY(0deg)"
             tarjeta2.style.transform = "rotateY(0deg)"
         }else{
