@@ -15,11 +15,45 @@ function cargarIconos() {
         '<img src="img/magdalena.png">',
         '<img src="img/papas-fritas.png">',
         '<img src="img/platanos.png">',
-        '<img src="img/">',
-        '<img src="img/">',
-        '<img src="img/">',
+        '<img src="img/cereza.png">',
+
+        '<img src="img/pimiento-morron.png">',
+        '<img src="img/manzana.png">',
+        '<img src="img/queso.png">',
+        '<img src="img/huevo-frito.png">',
+        '<img src="img/galleta-de-la-fortuna.png">',
+        '<img src="img/pizza.png">',
+        '<img src="img/onigiri.png">',
+        '<img src="img/uvas.png">',
+        '<img src="img/chocolate">',
+        '<img src="img/fresa.png">',
+
+        '<img src="img/tocino.png">',
+        '<img src="img/aji-picante">',
+        '<img src="img/leche.png">',
+        '<img src="img/rabano.png">',
+        '<img src="img/melocoton.png">',
+        '<img src="img/malteada.png">',
+        '<img src="img/sandia.png">',
+        '<img src="img/guisante.png">',
+        '<img src="img/pudin.png">',
+        '<img src="img/pierna-de-pollo.png">',
+
+        '<img src="img/zanahoria.png">',
+        '<img src="img/pera.png">',
+        '<img src="img/pedazo-de-pastel.png">',
+        '<img src="img/sushi.png">',
+        '<img src="img/pancho">',
+        '<img src="img/naranaja.png">',
+        '<img src="img/brocoli.png">',
+        '<img src="img/berenjena.png">',
+        '<img src="img/albondiga.png">',
+        '<img src="img/pina.png">',
+
+        '<img src="img/paleta-de-hielo.png">',
     ]
 }
+// Se creo una funcion para crear un Arrar de 8 cartas aleatorias
 function IconosAleatorios() {
     cargarIconos()
     let al = 0;
@@ -27,7 +61,7 @@ function IconosAleatorios() {
     usados = []
    let rep = "";
     for (let i = 0; i < 8; i++) {   
-        al =  Math.floor(Math.random()*9 );  
+        al =  Math.floor(Math.random()*41 );  
         console.log("this is AL" +al);
        
         rep = repetido(al);
@@ -38,23 +72,14 @@ function IconosAleatorios() {
             cartas[i] = iconos[al];   
             console.log("contador" + i); 
         } else{ i = i-1;
-            console.log("quitamos" + i);}
-        
-      /*  while (rep != false) {
-            console.log(rep);
-            al =  Math.floor(Math.random()*8 +1);
-            console.log(al);
-            
-            console.log(rep);
-            usados.push(al);  
-            }
-        */                        
-        
-            
+            // si la carta ya se uso se resta 1 de i para que busque otra carta.
+            console.log("quitamos" + i);}            
+   
     }
     console.log(cartas);
 
 }
+// Se creo funcion para ver si el numero o carta no es repetido.
 function repetido(num) {
    let repe = false;
     for (i=0; i < usados.length; i++) {
