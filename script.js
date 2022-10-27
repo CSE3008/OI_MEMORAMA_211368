@@ -1,6 +1,9 @@
 
 let iconos = []
 let selecciones = []
+let intentos = 0;
+// apuntamos a elementos en HTML
+let mostrarIntentos = document.getElementById('intentos');
 
 generarTablero()
 
@@ -129,11 +132,13 @@ function deseleccionar(selecciones) {
         let trasera1 = document.getElementById("trasera" + selecciones[0])
         let trasera2 = document.getElementById("trasera" + selecciones[1])
         if (trasera1.innerHTML != trasera2.innerHTML) {
+            intentos ++;
             trasera1.style.boxShadow  = 'inset 0 0 0 5px #D0312D'
             trasera2.style.boxShadow  = 'inset 0 0 0 5px #D0312D'
             let tarjeta1 = document.getElementById("tarjeta" + selecciones[0])
             let tarjeta2 = document.getElementById("tarjeta" + selecciones[1])
             setTimeout(() => {
+                mostrarIntentos.innerHTML = ` Numero de Intentos: ${intentos}`;
                 tarjeta1.style.transform = "rotateY(0deg)"
                 tarjeta2.style.transform = "rotateY(0deg)"
                 trasera1.style.boxShadow  = 'inset 0 0 0 5px lightcyan'
