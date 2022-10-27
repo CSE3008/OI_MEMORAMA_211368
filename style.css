@@ -46,7 +46,7 @@ img {
 .tarjeta {
     position: relative;
     transform-style: preserve-3d;
-   /* animation: iniciar 5s;*/
+    /*  animation: iniciar 5s; */
 }
 
 .cara {

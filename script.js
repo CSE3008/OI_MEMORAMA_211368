@@ -25,11 +25,11 @@ function cargarIconos() {
         '<img src="img/pizza.png">',
         '<img src="img/onigiri.png">',
         '<img src="img/uvas.png">',
-        '<img src="img/chocolate">',
+        '<img src="img/chocolate.png">',
         '<img src="img/fresa.png">',
 
         '<img src="img/tocino.png">',
-        '<img src="img/aji-picante">',
+        '<img src="img/aji-picante.png">',
         '<img src="img/leche.png">',
         '<img src="img/rabano.png">',
         '<img src="img/melocoton.png">',
@@ -43,8 +43,8 @@ function cargarIconos() {
         '<img src="img/pera.png">',
         '<img src="img/pedazo-de-pastel.png">',
         '<img src="img/sushi.png">',
-        '<img src="img/pancho">',
-        '<img src="img/naranaja.png">',
+        '<img src="img/pancho.png">',
+        '<img src="img/naranja.png">',
         '<img src="img/brocoli.png">',
         '<img src="img/berenjena.png">',
         '<img src="img/albondiga.png">',
@@ -62,20 +62,15 @@ function IconosAleatorios() {
    let rep = "";
     for (let i = 0; i < 8; i++) {   
         al =  Math.floor(Math.random()*41 );  
-        console.log("this is AL" +al);
-       
         rep = repetido(al);
-
-        console.log (rep);
+       
         if  (rep == false){       
               usados.push(al);    
             cartas[i] = iconos[al];   
-            console.log("contador" + i); 
-        } else{ i = i-1;
-            // si la carta ya se uso se resta 1 de i para que busque otra carta.
-            console.log("quitamos" + i);}            
-   
-    }
+           
+        } else{ i = i-1;}
+            // si la carta ya se uso se resta 1 de i para que busque otra carta. 
+     }
     console.log(cartas);
 
 }
@@ -134,15 +129,30 @@ function deseleccionar(selecciones) {
         let trasera1 = document.getElementById("trasera" + selecciones[0])
         let trasera2 = document.getElementById("trasera" + selecciones[1])
         if (trasera1.innerHTML != trasera2.innerHTML) {
+            trasera1.style.boxShadow  = 'inset 0 0 0 5px #D0312D'
+            trasera2.style.boxShadow  = 'inset 0 0 0 5px #D0312D'
             let tarjeta1 = document.getElementById("tarjeta" + selecciones[0])
             let tarjeta2 = document.getElementById("tarjeta" + selecciones[1])
-            tarjeta1.style.borderColor = '#FF0000'
-            tarjeta2.style.borderColor = '#FF0000'
-            tarjeta1.style.transform = "rotateY(0deg)"
-            tarjeta2.style.transform = "rotateY(0deg)"
+            setTimeout(() => {
+                tarjeta1.style.transform = "rotateY(0deg)"
+                tarjeta2.style.transform = "rotateY(0deg)"
+                trasera1.style.boxShadow  = 'inset 0 0 0 5px lightcyan'
+                trasera2.style.boxShadow  = 'inset 0 0 0 5px lightcyan'
+            }, 2000);
+          
+           
+           // trasera1.style.boxShadow  = 'inset 0 0 0 5px lightcyan'
+            //trasera2.style.boxShadow  = 'inset 0 0 0 5px lightcyan'
         }else{
-            trasera1.style.background = "plum"
-            trasera2.style.background = "plum"
+            trasera1.style.boxShadow  = 'inset 0 0 0 5px #b0fd82'
+            trasera2.style.boxShadow  = 'inset 0 0 0 5px #b0fd82'
+            setTimeout(() => {
+                trasera1.style.background = "plum"
+                trasera2.style.background = "plum"
+                trasera1.style.boxShadow  = 'inset 0 0 0 5px lightcyan'
+                trasera2.style.boxShadow  = 'inset 0 0 0 5px lightcyan'
+            }, 2000);
+            
         }
     }, 1000);
 }
